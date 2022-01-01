@@ -8,53 +8,53 @@
 
 ## Tags
 
--   [ ]a
--   [ ]alpha
--   [ ]alpha1
--   [ ]alpha2
--   [ ]alpha3
--   [ ]alpha4
--   [ ]an
--   [X]b
--   [ ]be
--   [ ]blur
--   [ ]bord
--   [ ]bordX
--   [ ]bordY
--   [ ]clip
--   [ ]clipI
--   [ ]color1
--   [ ]color2
--   [ ]color3
--   [ ]color4
--   [ ]fad
--   [ ]fade
--   [ ]fax
--   [ ]fay
--   [ ]fe
--   [ ]fn
--   [ ]frx
--   [ ]fry
--   [ ]frz
--   [ ]fs
--   [ ]fscx
--   [ ]fscy
--   [ ]fsp
--   [ ]fx
--   [ ]i
--   [ ]k
--   [ ]kf
--   [ ]ko
--   [X]move
--   [ ]org
--   [ ]p
--   [ ]pbo
--   [X]pos
--   [ ]q
--   [ ]r
--   [ ]s
--   [ ]shad
--   [ ]shadX
--   [ ]shadY
--   [ ]t
--   [ ]u
+-   [ ] a
+-   [ ] alpha
+-   [ ] alpha1
+-   [ ] alpha2
+-   [ ] alpha3
+-   [ ] alpha4
+-   [ ] an
+-   [x] b
+-   [ ] be
+-   [ ] blur
+-   [ ] bord
+-   [ ] bordX
+-   [ ] bordY
+-   [ ] clip
+-   [ ] clipI
+-   [ ] color1
+-   [ ] color2
+-   [ ] color3
+-   [ ] color4
+-   [ ] fad
+-   [ ] fade
+-   [ ] fax
+-   [ ] fay
+-   [ ] fe
+-   [ ] fn
+-   [ ] frx
+-   [ ] fry
+-   [ ] frz
+-   [ ] fs
+-   [ ] fscx
+-   [ ] fscy
+-   [ ] fsp
+-   [ ] fx
+-   [ ] i
+-   [ ] k
+-   [ ] kf
+-   [ ] ko
+-   [x] move
+-   [ ] org
+-   [ ] p
+-   [ ] pbo
+-   [x] pos
+-   [ ] q
+-   [ ] r
+-   [ ] s
+-   [ ] shad
+-   [ ] shadX
+-   [ ] shadY
+-   [ ] t
+-   [ ] u
