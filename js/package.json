@@ -1,0 +1,19 @@
+{
+    "name": "asu",
+    "version": "1.0.0",
+    "main": "dist/asu.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "esbuild dist/asu.js --bundle --minify --sourcemap --outfile=dist/browser/asu.js",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.0.3",
+        "esbuild": "^0.14.10",
+        "jest": "^27.4.5",
+        "source-map-support": "^0.5.21",
+        "ts-jest": "^27.1.2",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.2"
+    }
+}
