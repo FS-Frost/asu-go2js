@@ -26,10 +26,11 @@ jobs:
               run: go vet ./...
 
             - uses: actions/setup-node@v2
-              working-directory: js
               with:
                   node-version: 16.13.1
                   cache: "yarn"
+                  cache-dependency-path: |
+                      js/yarn.lock
 
             - name: Install node_modules
               working-directory: js
