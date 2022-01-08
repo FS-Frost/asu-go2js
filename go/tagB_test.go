@@ -8,13 +8,12 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestNewTagPosFromString(t *testing.T) {
+func TestNewTagBFromString(t *testing.T) {
 	type caseType struct {
 		caseName string
 		text     string
-		expected *asu.TagPos
-		x        float64
-		y        float64
+		expected *asu.TagB
+		f        float64
 	}
 
 	cases := []caseType{}
@@ -26,22 +25,19 @@ func TestNewTagPosFromString(t *testing.T) {
 		floatValues = append(floatValues, n, -n, f, -f)
 	}
 
-	for _, x := range floatValues {
-		for _, y := range floatValues {
-			newCase := caseType{
-				caseName: fmt.Sprintf("%g, %g", x, y),
-				text:     fmt.Sprintf(`\pos(%g,%g)`, x, y),
-				expected: asu.NewTagPos().FromArgs(x, y),
-				x:        x,
-				y:        y,
-			}
-
-			cases = append(cases, newCase)
+	for _, f := range floatValues {
+		newCase := caseType{
+			caseName: fmt.Sprintf("%g", f),
+			text:     fmt.Sprintf(`\b%g`, f),
+			expected: asu.NewTagB().FromArgs(f),
+			f:        f,
 		}
+
+		cases = append(cases, newCase)
 	}
 
 	for _, c := range cases {
-		actual, err := asu.NewTagPos().FromString(c.text)
+		actual, err := asu.NewTagB().FromString(c.text)
 		require.Nil(t, err, c.caseName)
 		require.Equal(t, c.expected, actual, c.caseName)
 	}

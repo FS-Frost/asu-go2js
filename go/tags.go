@@ -38,6 +38,6 @@ func GetTagRegex(tag TagType) string {
 	}
 }
 
-func formatTagParsingError(tag namedTag, err error) error {
-	return NewError("error parsing %s tag: %v", tag.Name(), err)
+func formatTagParsingError(tag namedTag, text string, err error) error {
+	return NewError("error parsing %s tag on <%s>: %v", tag.Name(), text, err)
 }

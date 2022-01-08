@@ -7,11 +7,11 @@ import (
 	"github.com/oriser/regroup"
 )
 
-const regexTagB = `(?P<tag>\\b\s*(?P<arg>[0-1]))`
+const regexTagB = `(?P<tag>\\b\s*(?P<arg>-?\d+(?:\.\d+)?))`
 
 type TagB struct {
 	baseTag
-	Argument int `regroup:"arg,required" js:"argument"`
+	Argument float64 `regroup:"arg,required" js:"argument"`
 }
 
 func (t *TagB) Name() string {
@@ -33,24 +33,13 @@ func NewTagB() *TagB {
 	return t
 }
 
-// func (t *TagB) toJS() *js.Object {
-// 	tJS := &TagB{}
-// 	tJS.Object = t.Object
-// 	tJS.Argument = t.Argument
-// 	tJS.jsName = t.Name
-// 	tJS.jsFromArgs = t.FromArgs
-// 	tJS.jsFromString = t.FromString
-// 	tJS.jsToString = t.ToString
-// 	return tJS.Object
-// }
-
 func NewTagBJS() *js.Object {
 	t := NewTagB()
 	return t.Object
 }
 
-func (t *TagB) FromArgs(n int) *TagB {
-	t.Argument = n
+func (t *TagB) FromArgs(f float64) *TagB {
+	t.Argument = f
 	return t
 }
 
@@ -59,13 +48,13 @@ func (t *TagB) FromString(text string) (*TagB, error) {
 	err := re.MatchToTarget(text, t)
 
 	if err != nil {
-		return nil, formatTagParsingError(t, err)
+		return nil, formatTagParsingError(t, text, err)
 	}
 
 	return t, nil
 }
 
 func (t *TagB) ToString() string {
-	s := fmt.Sprintf(`\%s%d`, t.Name(), t.Argument)
+	s := fmt.Sprintf(`\%s%g`, t.Name(), t.Argument)
 	return s
 }

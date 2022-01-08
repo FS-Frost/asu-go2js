@@ -88,7 +88,7 @@ func (t *TagMove) FromString(text string) (*TagMove, error) {
 	err := re.MatchToTarget(text, t)
 
 	if err != nil {
-		return nil, formatTagParsingError(t, err)
+		return nil, formatTagParsingError(t, text, err)
 	}
 
 	return t, nil

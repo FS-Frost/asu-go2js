@@ -58,11 +58,5 @@ func TestNewTagMoveFromString(t *testing.T) {
 		actual, err := asu.NewTagMove().FromString(c.text)
 		require.Nil(t, err, c.text)
 		require.Equal(t, c.expected, actual, c.text)
-
-		// if pass {
-		// 	continue
-		// }
-
-		// t.Log()
 	}
 }
