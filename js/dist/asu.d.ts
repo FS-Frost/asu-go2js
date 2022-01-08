@@ -70,6 +70,7 @@ interface TagPos {
     fromString(text: string): [TagPos | null, Error | null];
     toString(): string;
 }
+
 interface TagPos {
     x: number;
     y: number;
@@ -79,6 +80,7 @@ interface TagPos {
     fromString(text: string): [TagPos | null, Error | null];
     toString(): string;
 }
+
 interface TagMove {
     x1: number;
     y1: number;
