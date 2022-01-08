@@ -1,5 +1,7 @@
 # asu-go2js
 
+[![Run tests](https://github.com/FS-Frost/asu-go2js/actions/workflows/main.yml/badge.svg)](https://github.com/FS-Frost/asu-go2js/actions/workflows/main.yml)
+
 Asu is a library to work with subtitles on ASS format.
 
 asu-go2js is a port of [Asu](https://github.com/FS-Frost/Asu.Utilidades) (originally for .NET) written in Go and compiled to JavaScript with TypeScript support.
