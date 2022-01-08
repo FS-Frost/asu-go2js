@@ -37,5 +37,4 @@ jobs:
               run: yarn install
 
             - name: Test JS
-              working-directory: js
-              run: yarn test
+              run: yarn --cwd js test
