@@ -25,6 +25,13 @@ jobs:
               working-directory: go
               run: go vet ./...
 
+            - name: Install GopherJS
+              run: go get -u github.com/gopherjs/gopherjs
+
+            - name: Compile Go to JS
+              working-directory: go/exports
+              run: gopherjs build -o ../../js/dist/asu.js --minify
+
             - uses: actions/setup-node@v2
               with:
                   node-version: 16.13.1
