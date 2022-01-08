@@ -1,0 +1,26 @@
+name: Run tests
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@v2.3.1
+
+            - name: Set up Go
+              uses: actions/setup-go@v2
+              with:
+                  go-version: 1.17
+
+            - name: Test
+              working-directory: go
+              run: go test -v ./...
+
+            - name: Vet
+              working-directory: go
+              run: go vet ./...
