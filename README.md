@@ -12,6 +12,11 @@ asu-go2js is a port of [Asu](https://github.com/FS-Frost/Asu.Utilidades) (origin
 -   Node.js 16.13.1
 -   Yarn 1.22.5
 -   GopherJS 1.17.0
+
+```shell
+go install github.com/gopherjs/gopherjs@latest
+```
+
 -   GNU Make 4.2.1
 
 ## Main make commands
