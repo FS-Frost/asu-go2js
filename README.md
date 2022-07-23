@@ -8,7 +8,7 @@ asu-go2js is a port of [Asu](https://github.com/FS-Frost/Asu.Utilidades) (origin
 
 ## Requeriments
 
--   Go 1.17.5
+-   Go 1.17.9
 -   Node.js 16.13.1
 -   Yarn 1.22.5
 -   GopherJS 1.17.0
