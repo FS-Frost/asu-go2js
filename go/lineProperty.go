@@ -16,4 +16,4 @@ const (
 	LINE_CONTENT         LineProperty = "content"
 )
 
-const regexLineProp = `(?P<type>(?:Dialogue|Comment)): (?P<layer>\d),(?P<start>\d*:\d{2}:\d{2}\.\d{2}),(?P<end>\d:\d{2}:\d{2}\.\d{2}),(?P<style>[^,]*),(?P<actor>[^,]*),(?P<marginL>\d*),(?P<marginR>\d*),(?P<marginV>\d*),(?P<effect>[^,]*),(?P<content>.*)`
+const regexLineProp = `(?P<type>(?:\w+)): (?P<layer>\d),(?P<start>\d*:\d{2}:\d{2}\.\d{2}),(?P<end>\d:\d{2}:\d{2}\.\d{2}),(?P<style>[^,]*),(?P<actor>[^,]*),(?P<marginL>\d*),(?P<marginR>\d*),(?P<marginV>\d*),(?P<effect>[^,]*),(?P<content>.*)`

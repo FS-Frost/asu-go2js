@@ -1,6 +1,7 @@
 declare var asu: Asu;
 
 interface Asu {
+    newError(format: string, ...args: any[]): AsuError;
     newLine(): Line;
     newTime(): Time;
 
@@ -13,8 +14,9 @@ interface Asu {
     replaceTag(text: string, tagType: string, newTag: string): string;
 }
 
-interface Error {
-    Message: string;
+interface AsuError {
+    message: string;
+    add(format: string, ...args: any[]): AsuError;
 }
 
 interface Line {
@@ -30,7 +32,7 @@ interface Line {
     effect: string;
     content: string;
 
-    fromString(text: string): [Line | null, Error | null];
+    fromString(text: string): [Line?, AsuError?];
     toString(): string;
     length(): number;
     equals(): boolean;
@@ -41,9 +43,9 @@ interface Time {
     minutes: number;
     seconds: number;
 
-    fromSeconds(seconds: number): [Time | null, Error | null];
+    fromSeconds(seconds: number): [Time?, AsuError?];
     fromArgs(hours: number, minutes: number, seconds: number): Time;
-    fromString(text: string): [Time | null, Error | null];
+    fromString(text: string): [Time?, AsuError?];
     toString(): string;
     toSeconds(): number;
     add(t2: Time): Time;
@@ -57,7 +59,7 @@ interface TagB {
 
     name(): string;
     fromArgs(n: number): TagB;
-    fromString(text: string): [TagB | null, Error | null];
+    fromString(text: string): [TagB?, AsuError?];
     toString(): string;
 }
 
@@ -67,7 +69,7 @@ interface TagPos {
 
     name(): string;
     fromArgs(x: number, y: number): TagPos;
-    fromString(text: string): [TagPos | null, Error | null];
+    fromString(text: string): [TagPos?, AsuError?];
     toString(): string;
 }
 
@@ -77,7 +79,7 @@ interface TagPos {
 
     name(): string;
     fromArgs(x: number, y: number): TagPos;
-    fromString(text: string): [TagPos | null, Error | null];
+    fromString(text: string): [TagPos?, AsuError?];
     toString(): string;
 }
 
@@ -91,6 +93,6 @@ interface TagMove {
 
     name(): string;
     fromArgs(x1: number, y1: number, x2: number, y2: number, t1: number, t2: number): TagMove;
-    fromString(text: string): [TagMove | null, Error | null];
+    fromString(text: string): [TagMove?, AsuError?];
     toString(): string;
 }

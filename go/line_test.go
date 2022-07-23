@@ -32,3 +32,11 @@ func TestNewLineFromString(t *testing.T) {
 	require.Nil(t, err)
 	require.Equal(t, expected, actual)
 }
+
+func TestNewLineFromStringWithInvalidType(t *testing.T) {
+	text := `Invalid: 3,0:00:00.00,1:23:45.67,Default,Chitanda,1,2,3,Some fx,{\b1\fs32\1c&H2F3066&}Some {\1c&H0B0B26&}text`
+	actual, err := asu.NewLine().FromString(text)
+	expectedErr := asu.NewError("invalid line type: 'Invalid'")
+	require.Equal(t, expectedErr, err)
+	require.Nil(t, actual)
+}

@@ -81,6 +81,10 @@ func (l *Line) FromString(text string) (*Line, error) {
 	var err error
 	props := ParseLineProperties(text)
 	l.Type = LineType(props[LINE_TYPE])
+	if !l.Type.IsValid() {
+		return nil, NewError("invalid line type: '%s'", l.Type)
+	}
+
 	l.Style = props[LINE_STYLE]
 	l.Actor = props[LINE_ACTOR]
 	l.Effect = props[LINE_EFFECT]

@@ -7,6 +7,7 @@ import (
 
 func main() {
 	globalAsu := map[string]interface{}{
+		"newError":   asu.NewErrorJS,
 		"newLine":    asu.NewLineJS,
 		"newTime":    asu.NewTimeJS,
 		"newTagB":    asu.NewTagBJS,

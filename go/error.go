@@ -1,9 +1,15 @@
 package asu
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gopherjs/gopherjs/js"
+)
 
 type Error struct {
-	Message string
+	*js.Object
+	Message string      `js:"message"`
+	jsAdd   interface{} `js:"add"`
 }
 
 func (e *Error) Error() string {
@@ -16,7 +22,18 @@ func (e *Error) Add(format string, a ...interface{}) *Error {
 }
 
 func NewError(format string, a ...interface{}) *Error {
-	return &Error{
-		Message: fmt.Sprintf(format, a...),
+	err := &Error{}
+	err.Object = NewJSObject()
+	err.Message = fmt.Sprintf(format, a...)
+	if err.Object == nil {
+		return err
 	}
+
+	err.jsAdd = err.Add
+	return err
+}
+
+func NewErrorJS(format string, a ...interface{}) *js.Object {
+	err := NewError(format, a...)
+	return err.Object
 }
