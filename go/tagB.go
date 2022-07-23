@@ -2,6 +2,7 @@ package asu
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/gopherjs/gopherjs/js"
 	"github.com/oriser/regroup"
@@ -39,7 +40,12 @@ func NewTagBJS() *js.Object {
 }
 
 func (t *TagB) FromArgs(f float64) *TagB {
-	t.Argument = f
+	s := fmt.Sprintf("%f", f)
+	f2, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		panic(fmt.Sprintf("error parsing %s to bool: %v", s, err))
+	}
+	t.Argument = f2
 	return t
 }
 
@@ -51,10 +57,16 @@ func (t *TagB) FromString(text string) (*TagB, error) {
 		return nil, formatTagParsingError(t, text, err)
 	}
 
+	f, err := strconv.ParseFloat(fmt.Sprintf("%f", t.Argument), 64)
+	if err != nil {
+		return nil, formatTagParsingError(t, text, err)
+	}
+	t.Argument = f
+
 	return t, nil
 }
 
 func (t *TagB) ToString() string {
-	s := fmt.Sprintf(`\%s%g`, t.Name(), t.Argument)
+	s := fmt.Sprintf(`\%s%f`, t.Name(), t.Argument)
 	return s
 }

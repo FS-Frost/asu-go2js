@@ -8,37 +8,27 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+var (
+	floatBaseCases = []float64{0, 1, -1, 1.00001, -1.00001, 123456789, -123456789, 123456789.00001, -123456789.0000123456789}
+)
+
+func TestBTag(t *testing.T) {
+	var n float64 = 12345678921234234234243
+	text := fmt.Sprintf(`\b%f`, n)
+	expected := &asu.TagB{Argument: n}
+	actual, err := asu.NewTagB().FromString(text)
+	require.Nil(t, err, text)
+	require.Equal(t, expected, actual, text)
+}
+
 func TestNewTagBFromString(t *testing.T) {
-	type caseType struct {
-		caseName string
-		text     string
-		expected *asu.TagB
-		f        float64
-	}
+	for i, f := range floatBaseCases {
+		caseName := fmt.Sprintf("case %d: %f", i, f)
+		text := fmt.Sprintf(`\b%.9f`, f)
+		expected := asu.NewTagB().FromArgs(f)
 
-	cases := []caseType{}
-	floatValues := []float64{}
-	baseValues := []float64{0, 10}
-
-	for _, n := range baseValues {
-		f := n + 0.1000001
-		floatValues = append(floatValues, n, -n, f, -f)
-	}
-
-	for _, f := range floatValues {
-		newCase := caseType{
-			caseName: fmt.Sprintf("%g", f),
-			text:     fmt.Sprintf(`\b%g`, f),
-			expected: asu.NewTagB().FromArgs(f),
-			f:        f,
-		}
-
-		cases = append(cases, newCase)
-	}
-
-	for _, c := range cases {
-		actual, err := asu.NewTagB().FromString(c.text)
-		require.Nil(t, err, c.caseName)
-		require.Equal(t, c.expected, actual, c.caseName)
+		actual, err := asu.NewTagB().FromString(text)
+		require.Nil(t, err, caseName)
+		require.Equal(t, expected, actual, caseName)
 	}
 }
